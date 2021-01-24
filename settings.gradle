@@ -14,9 +14,6 @@ include 'sc-security:sc-security-core'
 include 'sc-security:sc-security-uaa'
 include 'sc-security:sc-security-client'
 
-include 'sc-monitor:sc-admin-server'
-include 'sc-monitor:sc-zipkin-server'
-
 include 'sc-provider:sc-web-auth'
 include 'sc-provider:sc-web'
 include 'sc-provider:sc-service'
@@ -24,7 +21,5 @@ include 'sc-provider:sc-project'
 include 'sc-provider:sc-xzsd-pc'
 include 'sc-provider:sc-xzsd-app'
 
-
-include 'sc-provider-api:sc-service-api'
 
 
