@@ -1,4 +1,4 @@
-rootProject.name = 'sc2019'
+rootProject.name = 'PlanActivities'
 
 include 'sc-common:sc-common-base'
 include 'sc-common:sc-core'
@@ -17,10 +17,6 @@ include 'sc-security:sc-security-client'
 include 'sc-monitor:sc-admin-server'
 include 'sc-monitor:sc-zipkin-server'
 
-include 'sc-support:sc-job'
-include 'sc-support:sc-log'
-include 'sc-support:sc-shardingjdbc'
-
 include 'sc-provider:sc-web-auth'
 include 'sc-provider:sc-web'
 include 'sc-provider:sc-service'
@@ -31,5 +27,4 @@ include 'sc-provider:sc-xzsd-app'
 
 include 'sc-provider-api:sc-service-api'
 
-include 'sc-web-static'
 
