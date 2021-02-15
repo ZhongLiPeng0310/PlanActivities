@@ -32,11 +32,11 @@ zuul:
       sensitiveHeaders:
     pc:
       path: /pc/**
-      serviceId: sc-xzsd-pc
+      serviceId: plan-pc
       sensitiveHeaders:
     app:
       path: /app/**
-      serviceId: sc-xzsd-app
+      serviceId: plan-app
       sensitiveHeaders:
   add-proxy-headers: true
   add-host-header: true

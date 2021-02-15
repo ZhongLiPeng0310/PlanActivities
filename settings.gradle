@@ -18,8 +18,8 @@ include 'sc-provider:sc-web-auth'
 include 'sc-provider:sc-web'
 include 'sc-provider:sc-service'
 include 'sc-provider:sc-project'
-include 'sc-provider:sc-xzsd-pc'
-include 'sc-provider:sc-xzsd-app'
+include 'sc-provider:plan-pc'
+include 'sc-provider:plan-app'
 
 
 
