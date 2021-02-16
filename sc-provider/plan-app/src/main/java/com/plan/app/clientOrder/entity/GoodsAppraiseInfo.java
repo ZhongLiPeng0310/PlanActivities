@@ -1,13 +1,16 @@
 package com.plan.app.clientOrder.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 import java.util.List;
 
 /**
  * 商品评价实体类
  * @author zhong
- * @date 2020-04-13
+ * @date 2021-01-05
  */
+@Data
 public class GoodsAppraiseInfo {
     /**
      * 评价编码
@@ -102,172 +105,4 @@ public class GoodsAppraiseInfo {
      * @return
      */
     private int pageNum;
-
-    public String getAppraiseCode() {
-        return appraiseCode;
-    }
-
-    public void setAppraiseCode(String appraiseCode) {
-        this.appraiseCode = appraiseCode;
-    }
-
-    public String getUserCode() {
-        return userCode;
-    }
-
-    public void setUserCode(String userCode) {
-        this.userCode = userCode;
-    }
-
-    public String getUserAcct() {
-        return userAcct;
-    }
-
-    public void setUserAcct(String userAcct) {
-        this.userAcct = userAcct;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getAppraiseDetail() {
-        return appraiseDetail;
-    }
-
-    public void setAppraiseDetail(String appraiseDetail) {
-        this.appraiseDetail = appraiseDetail;
-    }
-
-    public String getGoodsCode() {
-        return goodsCode;
-    }
-
-    public void setGoodsCode(String goodsCode) {
-        this.goodsCode = goodsCode;
-    }
-
-    public List<ImageInfo> getImageInfoList() {
-        return imageInfoList;
-    }
-
-    public void setImageInfoList(List<ImageInfo> imageInfoList) {
-        this.imageInfoList = imageInfoList;
-    }
-
-    public String getAppraiseLevel() {
-        return appraiseLevel;
-    }
-
-    public void setAppraiseLevel(String appraiseLevel) {
-        this.appraiseLevel = appraiseLevel;
-    }
-
-    public int getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(int isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
-    public String getCreateName() {
-        return createName;
-    }
-
-    public void setCreateName(String createName) {
-        this.createName = createName;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getUpdateName() {
-        return updateName;
-    }
-
-    public void setUpdateName(String updateName) {
-        this.updateName = updateName;
-    }
-
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public int getVersion() {
-        return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public int getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(int pageNum) {
-        this.pageNum = pageNum;
-    }
-
-    public String getImageCode() {
-        return imageCode;
-    }
-
-    public void setImageCode(String imageCode) {
-        this.imageCode = imageCode;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    public int getImageNum() {
-        return imageNum;
-    }
-
-    public void setImageNum(int imageNum) {
-        this.imageNum = imageNum;
-    }
-
-    public String getOrderCode() {
-        return orderCode;
-    }
-
-    public void setOrderCode(String orderCode) {
-        this.orderCode = orderCode;
-    }
-
-    public String getAvgLevel() {
-        return avgLevel;
-    }
-
-    public void setAvgLevel(String avgLevel) {
-        this.avgLevel = avgLevel;
-    }
 }

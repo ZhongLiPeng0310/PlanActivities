@@ -1,5 +1,8 @@
 package com.plan.app.storer.entity;
 
+import lombok.Data;
+
+@Data
 public class StorerInfo {
     /**
      * 用户编号
@@ -26,51 +29,4 @@ public class StorerInfo {
      */
     private String address;
 
-    public void setUserCode(String userCode) {
-        this.userCode = userCode;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public void setStoreCode(String storeCode) {
-        this.storeCode = storeCode;
-    }
-
-    public void setStoreName(String storeName) {
-        this.storeName = storeName;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getUserCode() {
-        return userCode;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getStoreCode() {
-        return storeCode;
-    }
-
-    public String getStoreName() {
-        return storeName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
 }

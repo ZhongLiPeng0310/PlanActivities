@@ -1,10 +1,13 @@
 package com.plan.app.cart.entity;
 
+import lombok.Data;
+
 /**
  * 购物车实体类
  * @author zhong
- * @date 2020-08-25
+ * @date 2021-01-05
  */
+@Data
 public class CartInfo {
     /**
      * 购物车编码
@@ -91,173 +94,4 @@ public class CartInfo {
      * 页数
      */
     private int pageNum;
-
-    public String getCartCode() {
-        return cartCode;
-    }
-
-    public void setCartCode(String cartCode) {
-        this.cartCode = cartCode;
-    }
-
-    public String getSortNo() {
-        return sortNo;
-    }
-
-    public void setSortNo(String sortNo) {
-        this.sortNo = sortNo;
-    }
-
-    public String getUserCode() {
-        return userCode;
-    }
-
-    public void setUserCode(String userCode) {
-        this.userCode = userCode;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getGoodsCode() {
-        return goodsCode;
-    }
-
-    public void setGoodsCode(String goodsCode) {
-        this.goodsCode = goodsCode;
-    }
-
-    public String getGoodsName() {
-        return goodsName;
-    }
-
-    public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName;
-    }
-
-    public float getSalePrice() {
-        return salePrice;
-    }
-
-    public void setSalePrice(float salePrice) {
-        this.salePrice = salePrice;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    public String getStoreCode() {
-        return storeCode;
-    }
-
-    public void setStoreCode(String storeCode) {
-        this.storeCode = storeCode;
-    }
-
-    public int getOrderSum() {
-        return orderSum;
-    }
-
-    public void setOrderSum(int orderSum) {
-        this.orderSum = orderSum;
-    }
-
-    public int getNewOrderSum() {
-        return NewOrderSum;
-    }
-
-    public void setNewOrderSum(int newOrderSum) {
-        NewOrderSum = newOrderSum;
-    }
-
-    public float getOrderMoney() {
-        return orderMoney;
-    }
-
-    public void setOrderMoney(float orderMoney) {
-        this.orderMoney = orderMoney;
-    }
-
-    public int getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(int isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
-    public String getCreateName() {
-        return createName;
-    }
-
-    public void setCreateName(String createName) {
-        this.createName = createName;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getUpdateName() {
-        return updateName;
-    }
-
-    public void setUpdateName(String updateName) {
-        this.updateName = updateName;
-    }
-
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public int getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(int pageNum) {
-        this.pageNum = pageNum;
-    }
-
-    public String getGoodsIntroduce() {
-        return goodsIntroduce;
-    }
-
-    public void setGoodsIntroduce(String goodsIntroduce) {
-        this.goodsIntroduce = goodsIntroduce;
-    }
-
 }

@@ -1,12 +1,15 @@
 package com.plan.app.homePage.entity;
 
+import lombok.Data;
+
 import java.util.List;
 
 /**
  * @description app首页实体类
- * @author jintian
- * @date 2020-08-31
+ * @author zhong
+ * @date 2021-01-05
  */
+@Data
 public class HomePageInfo {
     /**
      * 轮播图路径
@@ -46,76 +49,4 @@ public class HomePageInfo {
      * @param chartRoute
      */
     private List<HomePageInfo> homePageInfoList;
-
-    public void setChartRoute(String chartRoute) {
-        this.chartRoute = chartRoute;
-    }
-
-    public void setGoodsCode(String goodsCode) {
-        this.goodsCode = goodsCode;
-    }
-
-    public void setVillageName(String villageName) {
-        this.villageName = villageName;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    public void setShowNumber(int showNumber) {
-        this.showNumber = showNumber;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    public String getChartRoute() {
-        return chartRoute;
-    }
-
-    public String getGoodsCode() {
-        return goodsCode;
-    }
-
-    public String getVillageCode() {
-        return villageCode;
-    }
-
-    public void setVillageCode(String villageCode) {
-        this.villageCode = villageCode;
-    }
-
-    public String getVillageName() {
-        return villageName;
-    }
-
-    public String getVillageIntroduce() {
-        return villageIntroduce;
-    }
-
-    public void setVillageIntroduce(String villageIntroduce) {
-        this.villageIntroduce = villageIntroduce;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public int getShowNumber() {
-        return showNumber;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public List<HomePageInfo> getHomePageInfoList() {
-        return homePageInfoList;
-    }
-
-    public void setHomePageInfoList(List<HomePageInfo> homePageInfoList) {
-        this.homePageInfoList = homePageInfoList;
-    }
 }

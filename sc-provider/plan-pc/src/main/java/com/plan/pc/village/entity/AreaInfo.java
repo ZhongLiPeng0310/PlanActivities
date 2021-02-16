@@ -1,5 +1,8 @@
 package com.plan.pc.village.entity;
 
+import lombok.Data;
+
+@Data
 public class AreaInfo {
     /**
      * 区编号
@@ -10,19 +13,4 @@ public class AreaInfo {
      */
     private String areaName;
 
-    public String getAreaId() {
-        return areaId;
-    }
-
-    public void setAreaId(String areaId) {
-        this.areaId = areaId;
-    }
-
-    public String getAreaName() {
-        return areaName;
-    }
-
-    public void setAreaName(String areaName) {
-        this.areaName = areaName;
-    }
 }

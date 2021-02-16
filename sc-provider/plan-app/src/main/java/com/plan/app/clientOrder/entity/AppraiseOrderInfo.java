@@ -1,8 +1,11 @@
 package com.plan.app.clientOrder.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.List;
 
+@Data
 public class AppraiseOrderInfo implements Serializable {
     /**
      * 订单编码
@@ -47,87 +50,5 @@ public class AppraiseOrderInfo implements Serializable {
      * @return
      */
     private int version;
-
-
-
-    public String getUserCode() {
-        return userCode;
-    }
-
-    public void setUserCode(String userCode) {
-        this.userCode = userCode;
-    }
-
-    public String getOrderCode() {
-        return orderCode;
-    }
-
-    public void setOrderCode(String orderCode) {
-        this.orderCode = orderCode;
-    }
-
-    public List<AppraiseInfo> getAppraiseInfoList() {
-        return appraiseInfoList;
-    }
-
-    public void setAppraiseInfoList(List<AppraiseInfo> appraiseInfoList) {
-        this.appraiseInfoList = appraiseInfoList;
-    }
-
-    public int getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(int isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
-    public String getCreateName() {
-        return createName;
-    }
-
-    public void setCreateName(String createName) {
-        this.createName = createName;
-    }
-
-    public String getUpdateName() {
-        return updateName;
-    }
-
-    public void setUpdateName(String updateName) {
-        this.updateName = updateName;
-    }
-
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public int getVersion() {
-        return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
-    public String getAvgLevel() {
-        return avgLevel;
-    }
-
-    public void setAvgLevel(String avgLevel) {
-        this.avgLevel = avgLevel;
-    }
-
-    public List<GoodsInfo> getGoodsInfoList() {
-        return goodsInfoList;
-    }
-
-    public void setGoodsInfoList(List<GoodsInfo> goodsInfoList) {
-        this.goodsInfoList = goodsInfoList;
-    }
 
 }

@@ -1,7 +1,10 @@
 package com.plan.app.goods.entity;
 
+import lombok.Data;
+
 import java.util.List;
 
+@Data
 public class GoodsEvaluates {
     /**
      * 页码
@@ -63,124 +66,4 @@ public class GoodsEvaluates {
      * 版本号
      */
     private String version;
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public int getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(int pageNum) {
-        this.pageNum = pageNum;
-    }
-
-    public String getAppraiseCode() {
-        return appraiseCode;
-    }
-
-    public void setAppraiseCode(String appraiseCode) {
-        this.appraiseCode = appraiseCode;
-    }
-
-    public String getUserCode() {
-        return userCode;
-    }
-
-    public void setUserCode(String userCode) {
-        this.userCode = userCode;
-    }
-
-    public String getGoodsCode() {
-        return goodsCode;
-    }
-
-    public void setGoodsCode(String goodsCode) {
-        this.goodsCode = goodsCode;
-    }
-
-    public int getAppraiseLevel() {
-        return appraiseLevel;
-    }
-
-    public void setAppraiseLevel(int appraiseLevel) {
-        this.appraiseLevel = appraiseLevel;
-    }
-
-    public String getUserAcct() {
-        return userAcct;
-    }
-
-    public void setUserAcct(String userAcct) {
-        this.userAcct = userAcct;
-    }
-
-    public String getAppraiseDetai() {
-        return appraiseDetai;
-    }
-
-    public void setAppraiseDetai(String appraiseDetai) {
-        this.appraiseDetai = appraiseDetai;
-    }
-
-    public List<EvaluateImage> getImageInfoList() {
-        return imageInfoList;
-    }
-
-    public void setImageInfoList(List<EvaluateImage> imageInfoList) {
-        this.imageInfoList = imageInfoList;
-    }
-
-    public int getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(int isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
-    public String getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(String gmtModified) {
-        this.gmtModified = gmtModified;
-    }
-
-    public String getLastModifiedBy() {
-        return lastModifiedBy;
-    }
-
-    public void setLastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
 }

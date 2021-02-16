@@ -1,5 +1,8 @@
 package com.plan.app.goods.entity;
 
+import lombok.Data;
+
+@Data
 public class EvaluateImage {
     /**
      * 图片编号
@@ -17,23 +20,4 @@ public class EvaluateImage {
      * 用户编号
      */
     private String userId;
-    public String getImageCode() { return imageCode; }
-
-    public void setImageCode(String imageCode) { this.imageCode = imageCode; }
-
-    public String getImagePath() { return imagePath; }
-
-    public void setImagePath(String imagePath) { this.imagePath = imagePath; }
-
-    public String getPictureGoodsCode() { return pictureGoodsCode; }
-
-    public void setPictureGoodsCode(String goodsCode) { this.pictureGoodsCode = pictureGoodsCode; }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 }

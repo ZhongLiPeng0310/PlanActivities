@@ -1,5 +1,8 @@
 package com.plan.app.goods.entity;
 
+import lombok.Data;
+
+@Data
 public class GoodsInfo {
     /**
      * 产品编号
@@ -49,100 +52,4 @@ public class GoodsInfo {
      * 版本号
      */
     private String version;
-
-    public String getGoodsCode() {
-        return goodsCode;
-    }
-
-    public void setGoodsCode(String goodsCode) {
-        this.goodsCode = goodsCode;
-    }
-
-    public String getGoodsName() {
-        return goodsName;
-    }
-
-    public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName;
-    }
-
-    public String getGoodsIntroduce() {
-        return goodsIntroduce;
-    }
-
-    public void setGoodsIntroduce(String goodsIntroduce) {
-        this.goodsIntroduce = goodsIntroduce;
-    }
-
-    public String getSalePrice() {
-        return salePrice;
-    }
-
-    public void setSalePrice(String salePrice) {
-        this.salePrice = salePrice;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    public String getAppraiseLevel() {
-        return appraiseLevel;
-    }
-
-    public void setAppraiseLevel(String appraiseLevel) {
-        this.appraiseLevel = appraiseLevel;
-    }
-
-    public String getStoreCode() {
-        return storeCode;
-    }
-
-    public void setStoreCode(String storeCode) {
-        this.storeCode = storeCode;
-    }
-
-    public String getStoreName() {
-        return storeName;
-    }
-
-    public void setStoreName(String storeName) {
-        this.storeName = storeName;
-    }
-
-    public String getStock() {
-        return stock;
-    }
-
-    public void setStock(String stock) {
-        this.stock = stock;
-    }
-
-    public String getOrderSum() {
-        return orderSum;
-    }
-
-    public void setOrderSum(String orderSum) {
-        this.orderSum = orderSum;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    public String getSumSale() {
-        return sumSale;
-    }
-
-    public void setSumSale(String sumSale) {
-        this.sumSale = sumSale;
-    }
 }

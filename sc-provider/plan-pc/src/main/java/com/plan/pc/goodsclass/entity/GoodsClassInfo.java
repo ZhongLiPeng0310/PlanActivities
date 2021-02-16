@@ -1,12 +1,15 @@
 package com.plan.pc.goodsclass.entity;
 
+import lombok.Data;
+
 import java.util.List;
 
 /**
  * 商品分类实体类
  * @author zhong
- * @date 2020-08-22
+ * @date 2021-01-04
  */
+@Data
 public class GoodsClassInfo {
     /**
      * 分类编码
@@ -87,156 +90,4 @@ public class GoodsClassInfo {
      */
     private List<ClassSecondList> classSecondList;
 
-    public String getClassCode() {
-        return classCode;
-    }
-
-    public void setClassCode(String classCode) {
-        this.classCode = classCode;
-    }
-
-    public String getClassName() {
-        return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getClassFirstCode() {
-        return classFirstCode;
-    }
-
-    public void setClassFirstCode(String classFirstCode) {
-        this.classFirstCode = classFirstCode;
-    }
-
-    public String getClassFirstName() {
-        return classFirstName;
-    }
-
-    public void setClassFirstName(String classFirstName) {
-        this.classFirstName = classFirstName;
-    }
-
-    public String getClassSecondCode() {
-        return classSecondCode;
-    }
-
-    public void setClassSecondCode(String classSecondCode) {
-        this.classSecondCode = classSecondCode;
-    }
-
-    public String getClassSecondName() {
-        return classSecondName;
-    }
-
-    public void setClassSecondName(String classSecondName) {
-        this.classSecondName = classSecondName;
-    }
-
-    public String getLastClassCode() {
-        return lastClassCode;
-    }
-
-    public void setLastClassCode(String lastClassCode) {
-        this.lastClassCode = lastClassCode;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-
-    public int getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(int isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
-    public String getCreateName() {
-        return createName;
-    }
-
-    public void setCreateName(String createName) {
-        this.createName = createName;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getUpdateName() {
-        return updateName;
-    }
-
-    public void setUpdateName(String updateName) {
-        this.updateName = updateName;
-    }
-
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public int getVersion() {
-        return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public int getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(int pageNum) {
-        this.pageNum = pageNum;
-    }
-
-    public List<ClassFirstList> getClassFirstList() {
-        return classFirstList;
-    }
-
-    public void setClassFirstList(List<ClassFirstList> classFirstList) {
-        this.classFirstList = classFirstList;
-    }
-
-    public List<ClassSecondList> getClassSecondList() {
-        return classSecondList;
-    }
-
-    public void setClassSecondList(List<ClassSecondList> classSecondList) {
-        this.classSecondList = classSecondList;
-    }
-
-    public String getGoodsCode() {
-        return goodsCode;
-    }
-
-    public void setGoodsCode(String goodsCode) {
-        this.goodsCode = goodsCode;
-    }
 }

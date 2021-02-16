@@ -1,10 +1,13 @@
 package com.plan.pc.hotVillage.entity;
 
+import lombok.Data;
+
 /**
  * @Description 热门乡村实体类
- * @author jintian
- * @date 2020-08-23
+ * @author zhong
+ * @date 2021-01-04
  */
+@Data
 public class HotVillageInfo {
     /**
      * 热门乡村编号
@@ -54,100 +57,4 @@ public class HotVillageInfo {
      * 版本号
      */
     private String version;
-
-    public void setHotCode(String hotCode) {
-        this.hotCode = hotCode;
-    }
-
-    public void setVillageCode(String villageCode) {
-        this.villageCode = villageCode;
-    }
-
-    public void setVillageName(String villageName) {
-        this.villageName = villageName;
-    }
-
-    public void setVillageIntroduce(String villageIntroduce) {
-        this.villageIntroduce = villageIntroduce;
-    }
-
-    public void setHotId(int hotId) {
-        this.hotId = hotId;
-    }
-
-    public void setShowNo(int showNo) {
-        this.showNo = showNo;
-    }
-
-    public void setIsDeleted(int isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    public void setCreateName(String createName) {
-        this.createName = createName;
-    }
-
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public void setUpdateName(String updateName) {
-        this.updateName = updateName;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    public String getHotCode() {
-        return hotCode;
-    }
-
-    public String getVillageCode() {
-        return villageCode;
-    }
-
-    public String getVillageName() {
-        return villageName;
-    }
-
-    public String getVillageIntroduce() {
-        return villageIntroduce;
-    }
-
-    public int getHotId() {
-        return hotId;
-    }
-
-    public int getShowNo() {
-        return showNo;
-    }
-
-    public int getIsDeleted() {
-        return isDeleted;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public String getCreateName() {
-        return createName;
-    }
-
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-    public String getUpdateName() {
-        return updateName;
-    }
-
-    public String getVersion() {
-        return version;
-    }
 }
