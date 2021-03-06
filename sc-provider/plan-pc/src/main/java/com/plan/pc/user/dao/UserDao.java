@@ -68,8 +68,9 @@ public interface UserDao {
      * 获取顶部导航栏
      * @author zhong
      * @date 2020-04-16
-     * @param userId
+     * @param userInfo
      * @return
      */
-    UserInfo getUserUrl(String userId);
+    UserInfo getUserUrl(UserInfo userInfo);
+
 }

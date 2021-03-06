@@ -148,13 +148,13 @@
     </update>
 
     <!--获取顶部导航栏-->
-    <select id="getUserUrl" parameterType="java.lang.String" resultType="com.plan.pc.user.entity.UserInfo">
+    <select id="getUserUrl" resultType="com.plan.pc.user.entity.UserInfo">
         select
             user_code userCode,
             user_name userName,
             image_path imagePath,
             role role
         from t_sys_user
-        where user_code = #{userId}
+        where user_code = #{userCode}
     </select>
 </mapper>

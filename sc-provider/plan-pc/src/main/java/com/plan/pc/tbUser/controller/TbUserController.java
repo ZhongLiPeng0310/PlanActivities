@@ -1,9 +1,15 @@
-package com.plan.pc.user.controller;
+package com.plan.pc.tbUser.controller;
+
+/**
+ * @author 12533
+ */
 
 import com.neusoft.core.restful.AppResponse;
 import com.neusoft.security.client.utils.SecurityUtils;
+import com.plan.pc.tbUser.entity.TbUserInfo;
+import com.plan.pc.tbUser.entity.UserEntity;
+import com.plan.pc.tbUser.service.TbUserService;
 import com.plan.pc.user.entity.UserInfo;
-import com.plan.pc.user.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,25 +24,24 @@ import javax.annotation.Resource;
  * @Date 2020-08-22
  */
 @RestController
-@RequestMapping("/user")
-public class UserController {
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+@RequestMapping("/tbUser")
+public class TbUserController {
+    private static final Logger logger = LoggerFactory.getLogger(com.plan.pc.user.controller.UserController.class);
+
     @Resource
-    private UserService userService;
+    private TbUserService tbUserService;
+
     /**
-     * saveUser 新增用户
-     * @param userInfo
+     * saveUser 保存用户
+     * @param entity
      * @return AppResponse
      * @author chenchaotao
      * @Date 2020-03-24
      */
     @PostMapping("saveUser")
-    public AppResponse saveUser(UserInfo userInfo) {
+    public AppResponse saveUser(UserEntity entity) {
         try {
-            //获取用户id
-            String userId = SecurityUtils.getCurrentUserId();
-            userInfo.setCreateBy(userId);
-            AppResponse appResponse = userService.saveUser(userInfo);
+            AppResponse appResponse = tbUserService.saveUser(entity);
             return appResponse;
         } catch (Exception e) {
             logger.error("用户新增失败", e);
@@ -53,9 +58,9 @@ public class UserController {
      * @Date 2020-08-22
      */
     @RequestMapping(value = "listUsersByPage")
-    public AppResponse listUsersByPage(UserInfo userInfo){
+    public AppResponse listUsersByPage(TbUserInfo userInfo){
         try{
-            return userService.listUsersByPage(userInfo);
+            return tbUserService.listUsersByPage(userInfo);
         }catch (Exception e){
             logger.error("查询用户列表异常",e);
             System.out.println(e.toString());
@@ -65,15 +70,15 @@ public class UserController {
 
     /**
      * getUserByUserCode 查询用户详情
-     * @param userCode
+     * @param id
      * @return AppResponse
      * @author chenchaotao
      * @Date 2020-08-22
      */
     @RequestMapping(value = "getUserByUserCode")
-    public AppResponse findUserById(String userCode){
+    public AppResponse findUserById(String id){
         try{
-            return userService.getUserByUserCode(userCode);
+            return tbUserService.getUserByUserCode(id);
         }catch (Exception e){
             logger.error("用户查询错误",e);
             System.out.println(e.toString());
@@ -82,38 +87,18 @@ public class UserController {
     }
 
     /**
-     * updateUser 修改用户信息
-     * @param userInfo
-     * @return AppResponse
-     * @author chenchaotoa
-     * @Date 2020-03-06
-     */
-    @PostMapping("updateUser")
-    public AppResponse updateUser(UserInfo userInfo){
-        try{
-            String userCode = SecurityUtils.getCurrentUserId();
-            userInfo.setLastModifiedBy(userCode);
-            return userService.updateUser(userInfo);
-        }catch (Exception e){
-            logger.error("修改用户信息错误",e);
-            System.out.println(e.toString());
-            throw e;
-        }
-    }
-
-    /**
      * deleteUser 删除用户
-     * @param userCode
+     * @param id
      * @return AppResponse
      * @author chenchaotao
      * @Date 2020-08-22
      */
     @PostMapping("deleteUser")
-    public AppResponse deleteUser(String userCode){
+    public AppResponse deleteUser(String id){
         try{
             //获取用户id
-            String Id = SecurityUtils.getCurrentUserId();
-            return userService.deleteUser(userCode,Id);
+            String userId = SecurityUtils.getCurrentUserId();
+            return tbUserService.deleteUser(id,userId);
         }catch (Exception e){
             logger.error("用户删除错误", e);
             System.out.println(e.toString());
@@ -133,7 +118,7 @@ public class UserController {
         try{
             String userId = SecurityUtils.getCurrentUserId();
             userInfo.setUserCode(userId);
-            return userService.getUserUrl(userInfo);
+            return tbUserService.getUserUrl(userInfo);
         }catch (Exception e){
             logger.error("导航栏查询失败",e);
             System.out.println(e.toString());
@@ -141,3 +126,4 @@ public class UserController {
         }
     }
 }
+
