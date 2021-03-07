@@ -7,6 +7,7 @@ import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.StringUtil;
 import com.plan.pc.tbUser.dao.TbUserDao;
 import com.plan.pc.tbUser.entity.TbUserInfo;
+import com.plan.pc.tbUser.entity.TbUserVo;
 import com.plan.pc.tbUser.entity.UserEntity;
 import com.plan.pc.tbUser.repository.UserRepository;
 import com.plan.pc.user.entity.UserInfo;
@@ -47,11 +48,11 @@ public class TbUserService {
 
     /**
      * 保存
-     * @param entity
+     * @param userInfo
      * @return
      */
     @Transactional(rollbackFor = Exception.class)
-    public AppResponse saveUser(UserEntity entity) {
+    public AppResponse saveUser(TbUserInfo userInfo) {
         // 校验账号是否存在
 //        int countUser = userDao.countUser(userInfo);
 //        if(0 != countUser) {
@@ -66,15 +67,26 @@ public class TbUserService {
 //                userInfo.setUserPassword(pwd);
 //            }
 //        }
+        UserEntity entity = new UserEntity();
+        UserEntity oldEntity = userRepository.findById(userInfo.getId());
+        BeanUtils.copyProperties(userInfo,entity);
         if (entity.getId() == null){
             entity.setId(StringUtil.getCommonCode(2));
+            //获取用户id
+            String userId = SecurityUtils.getCurrentUserId();
+            entity.setCreateName(userId);
+            entity.setCreateTime(new Date());
+            entity.setUpdateName(userId);
+            entity.setUpdateTime(new Date());
+        }else {
+            entity.setId(entity.getId());
+            //获取用户id
+            String userId = SecurityUtils.getCurrentUserId();
+            entity.setCreateName(oldEntity.getCreateName());
+            entity.setCreateTime(oldEntity.getCreateTime());
+            entity.setUpdateName(userId);
+            entity.setUpdateTime(new Date());
         }
-        //获取用户id
-        String userId = SecurityUtils.getCurrentUserId();
-        entity.setCreateName(userId);
-        entity.setCreateTime(new Date());
-        entity.setUpdateName(userId);
-        entity.setUpdateTime(new Date());
         entity.setIsDeleted(1);
         entity.setVersion(0);
         // 新增用户
@@ -89,7 +101,9 @@ public class TbUserService {
      */
     public AppResponse getUserByUserCode(String id) {
         UserEntity userEntity = userRepository.findById(id);
-        return AppResponse.success("查询成功！",userEntity);
+        TbUserVo vo = new TbUserVo();
+        BeanUtils.copyProperties(userEntity,vo);
+        return AppResponse.success("查询成功！",vo);
     }
 
     /**

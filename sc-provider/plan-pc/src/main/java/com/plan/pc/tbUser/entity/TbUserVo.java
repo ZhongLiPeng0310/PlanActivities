@@ -6,7 +6,7 @@ import lombok.Data;
  * @author 12533
  */
 @Data
-public class TbUserInfo {
+public class TbUserVo {
     /**
      * 页码
      */
@@ -80,5 +80,4 @@ public class TbUserInfo {
      * 版本号
      */
     private String version;
-
 }

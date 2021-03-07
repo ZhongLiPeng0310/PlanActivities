@@ -26,22 +26,22 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/tbUser")
 public class TbUserController {
-    private static final Logger logger = LoggerFactory.getLogger(com.plan.pc.user.controller.UserController.class);
+    private static final Logger logger = LoggerFactory.getLogger(com.plan.pc.tbUser.controller.TbUserController.class);
 
     @Resource
     private TbUserService tbUserService;
 
     /**
      * saveUser 保存用户
-     * @param entity
+     * @param userInfo
      * @return AppResponse
      * @author chenchaotao
      * @Date 2020-03-24
      */
     @PostMapping("saveUser")
-    public AppResponse saveUser(UserEntity entity) {
+    public AppResponse saveUser(TbUserInfo userInfo) {
         try {
-            AppResponse appResponse = tbUserService.saveUser(entity);
+            AppResponse appResponse = tbUserService.saveUser(userInfo);
             return appResponse;
         } catch (Exception e) {
             logger.error("用户新增失败", e);

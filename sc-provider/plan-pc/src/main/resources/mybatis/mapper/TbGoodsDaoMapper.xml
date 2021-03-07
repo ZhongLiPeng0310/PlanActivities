@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.plan.pc.tbGoods.dao.TbGoodsDao">
+
+    <!--用户列表-->
+    <select id="listGoodsByPage" parameterType="com.plan.pc.tbGoods.entity.TbGoodsInfo" resultType="com.plan.pc.tbGoods.entity.TbGoodsInfo">
+        select
+        a.id id,
+        a.goods_name goodsName,
+        a.price price,
+        a.remark remark,
+        a.create_name createName,
+        a.create_time createTime,
+        a.update_name updateName,
+        a.update_time updateTime,
+        a.version version
+        from tb_goods a
+        where a.is_deleted = 1
+        <if test="goodsName != null and goodsName != ''">
+            and a.goods_name like concat('%', #{goodsName}, '%')
+        </if>
+        order by a.create_time desc
+    </select>
+
+</mapper>

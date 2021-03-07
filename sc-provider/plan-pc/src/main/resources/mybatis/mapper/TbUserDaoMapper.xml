@@ -5,7 +5,7 @@
     <!--用户列表-->
     <select id="listUsersByPage" parameterType="com.plan.pc.tbUser.entity.TbUserInfo" resultType="com.plan.pc.tbUser.entity.TbUserInfo">
         select
-        a.id userCode,
+        a.id id,
         a.user_acct userAcct,
         a.user_name userName,
         a.role role,
