@@ -31,7 +31,7 @@ public class MenuService {
     @Transactional(rollbackFor = Exception.class)
     public AppResponse saveMenu(MenuInfo menuInfo) {
         menuInfo.setMenuCode(StringUtil.getCommonCode(2));
-        menuInfo.setIsDeleted(0);
+        menuInfo.setIsDeleted(1);
         //校验新增菜单时 菜单名称和路由是否重复
         int countMenu = menuDao.countMenu(menuInfo);
         if (0 != countMenu){

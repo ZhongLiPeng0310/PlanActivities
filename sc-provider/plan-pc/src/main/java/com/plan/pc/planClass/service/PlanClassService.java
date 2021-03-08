@@ -1,23 +1,19 @@
-package com.plan.pc.tbGoods.service;
+package com.plan.pc.planClass.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neusoft.core.restful.AppResponse;
 import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.StringUtil;
-import com.plan.pc.tbGoods.dao.TbGoodsDao;
-import com.plan.pc.tbGoods.entity.TbGoodsEntity;
-import com.plan.pc.tbGoods.entity.TbGoodsInfo;
-import com.plan.pc.tbGoods.entity.TbGoodsVo;
-import com.plan.pc.tbGoods.repository.TbGoodsRepository;
-import com.plan.pc.tbUser.entity.TbUserInfo;
-import com.plan.pc.tbUser.entity.UserEntity;
+import com.plan.pc.planClass.dao.PlanClassDao;
+import com.plan.pc.planClass.entity.PlanClassEntity;
+import com.plan.pc.planClass.entity.PlanClassInfo;
+import com.plan.pc.planClass.entity.PlanClassVo;
+import com.plan.pc.planClass.repository.PlanClassRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -27,24 +23,21 @@ import java.util.List;
  * @author 12533
  */
 @Service
-public class TbGoodsService {
+public class PlanClassService {
+    @Resource
+    private PlanClassDao planClassDao;
 
     @Resource
-    private TbGoodsDao tbGoodsDao;
-
-    @Resource
-    private TbGoodsRepository tbGoodsRepository;
-
+    private PlanClassRepository planClassRepository;
     /**
      * 保存
-     * @param tbGoodsInfo
+     * @param planClassInfo
      * @return
      */
-    @Transactional(rollbackFor = Exception.class)
-    public AppResponse saveGoods(TbGoodsInfo tbGoodsInfo) {
-        TbGoodsEntity entity = new TbGoodsEntity();
-        TbGoodsEntity oldEntity = tbGoodsRepository.findById(tbGoodsInfo.getId());
-        BeanUtils.copyProperties(tbGoodsInfo,entity);
+    public AppResponse savePlanClass(PlanClassInfo planClassInfo) {
+        PlanClassEntity entity = new PlanClassEntity();
+        PlanClassEntity oldEntity = planClassRepository.findById(planClassInfo.getId());
+        BeanUtils.copyProperties(planClassInfo,entity);
         if (entity.getId() == null){
             entity.setId(StringUtil.getCommonCode(2));
             //获取用户id
@@ -54,7 +47,7 @@ public class TbGoodsService {
             entity.setUpdateName(userId);
             entity.setUpdateTime(new Date());
         }else {
-            entity.setId(oldEntity.getId());
+            entity.setId(entity.getId());
             //获取用户id
             String userId = SecurityUtils.getCurrentUserId();
             entity.setCreateName(oldEntity.getCreateName());
@@ -64,33 +57,33 @@ public class TbGoodsService {
         }
         entity.setIsDeleted(1);
         entity.setVersion(0);
-        // 新增物资
-        tbGoodsRepository.save(entity);
+        // 新增活动分类
+        planClassRepository.save(entity);
         return AppResponse.success("保存成功！");
     }
 
     /**
-     * 分页
-     * @param tbGoodsInfo
+     * 分页查询
+     * @param planClassVo
      * @return
      */
-    public AppResponse listGoodsByPage(TbGoodsInfo tbGoodsInfo) {
-        PageHelper.startPage(tbGoodsInfo.getPageNum(),tbGoodsInfo.getPageSize());
-        List<TbGoodsInfo> goodsInfoList = tbGoodsDao.listGoodsByPage(tbGoodsInfo);
+    public AppResponse listPlanClassByPage(PlanClassVo planClassVo) {
+        PageHelper.startPage(planClassVo.getPageNum(),planClassVo.getPageSize());
+        List<PlanClassVo> planClassVoList = planClassDao.listPlanClassByPage(planClassVo);
         //包装对象
-        PageInfo<TbGoodsInfo> pageData = new PageInfo<TbGoodsInfo>(goodsInfoList);
+        PageInfo<PlanClassVo> pageData = new PageInfo<PlanClassVo>(planClassVoList);
         return AppResponse.success("查询成功",pageData);
     }
 
     /**
-     * 查询详情
+     * 根据id获取详情
      * @param id
      * @return
      */
-    public AppResponse getGoodsById(String id) {
-        TbGoodsEntity tbGoodsEntity = tbGoodsRepository.findById(id);
-        TbGoodsVo vo = new TbGoodsVo();
-        BeanUtils.copyProperties(tbGoodsEntity,vo);
+    public AppResponse getPlanClassById(String id) {
+        PlanClassEntity planClassEntity = planClassRepository.findById(id);
+        PlanClassVo vo = new PlanClassVo();
+        BeanUtils.copyProperties(planClassEntity,vo);
         return AppResponse.success("查询成功！",vo);
     }
 
@@ -100,20 +93,20 @@ public class TbGoodsService {
      * @param userId
      * @return
      */
-    public AppResponse deleteGoods(String id, String userId) {
+    public AppResponse deletePlanClass(String id, String userId) {
         List<String> listId = Arrays.asList(id.split(","));
-        List<TbGoodsEntity> oldList = new ArrayList<>();
+        List<PlanClassEntity> oldList = new ArrayList<>();
         for (String strings : listId){
-            TbGoodsEntity oldEntity = tbGoodsRepository.findById(strings);
+            PlanClassEntity oldEntity = planClassRepository.findById(strings);
             oldList.add(oldEntity);
         }
-        for (TbGoodsEntity entitys : oldList){
-            TbGoodsEntity entity = new TbGoodsEntity();
+        for (PlanClassEntity entitys : oldList){
+            PlanClassEntity entity = new PlanClassEntity();
             BeanUtils.copyProperties(entitys,entity);
             entity.setUpdateName(userId);
             entity.setUpdateTime(new Date());
             entity.setIsDeleted(0);
-            tbGoodsRepository.save(entity);
+            planClassRepository.save(entity);
         }
         return AppResponse.success("删除成功！");
     }

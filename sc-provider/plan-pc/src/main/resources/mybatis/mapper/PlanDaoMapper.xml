@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.plan.pc.tbPlan.dao.PlanDao">
+
+<!--用户列表-->
+<select id="listPlanByPage" parameterType="com.plan.pc.tbPlan.entity.PlanVo" resultType="com.plan.pc.tbPlan.entity.PlanVo">
+    select
+    a.id id,
+    a.plan_name planName,
+    a.start_price startPrice,
+    b.class_name className,
+    c.user_name userName,
+    d.goods_name goodsName,
+    a.remark remark,
+    a.create_name createName,
+    a.create_time createTime,
+    a.update_name updateName,
+    a.update_time updateTime,
+    a.version version
+    from tb_plan a
+    LEFT JOIN tb_plan_class b
+    on a.class_id = b.id
+    LEFT JOIN tb_user c
+    on a.planer_id = c.id
+    LEFT JOIN tb_goods d
+    on a.goods_id = d.id
+    where a.is_deleted = 1
+    <if test="planName != null and planName != ''">
+        and a.plan_name like concat('%', #{planName}, '%')
+    </if>
+    order by a.create_time desc
+</select>
+
+</mapper>

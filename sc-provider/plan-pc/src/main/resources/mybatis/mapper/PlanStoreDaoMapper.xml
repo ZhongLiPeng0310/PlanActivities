@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.plan.pc.tbPlanStore.dao.PlanStoreDao">
+
+    <!--用户列表-->
+    <select id="listPlanStoreByPage" parameterType="com.plan.pc.tbPlanStore.entity.PlanStoreVo" resultType="com.plan.pc.tbPlanStore.entity.PlanStoreVo">
+        select
+        a.id id,
+        a.store_name storeName,
+        a.plan_id planId,
+        b.plan_name planName,
+        a.store_introduce storeIntroduce,
+        a.create_name createName,
+        a.create_time createTime,
+        a.update_name updateName,
+        a.update_time updateTime,
+        a.version version
+        from tb_plan_store a
+        LEFT JOIN tb_plan b
+        on a.plan_id = b.id
+        where a.is_deleted = 1
+        <if test="storeName != null and storeName != ''">
+            and a.store_name like concat('%', #{storeName}, '%')
+        </if>
+        order by a.create_time desc
+    </select>
+
+</mapper>
