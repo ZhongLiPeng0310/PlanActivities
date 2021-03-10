@@ -27,7 +27,7 @@
         <if test="role != null and role != ''">
             and a.role = #{role}
         </if>
-        order by create_time desc
+        order by a.create_time desc
     </select>
 
 </mapper>
