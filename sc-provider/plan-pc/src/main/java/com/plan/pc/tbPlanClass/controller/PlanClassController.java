@@ -1,10 +1,10 @@
-package com.plan.pc.planClass.controller;
+package com.plan.pc.tbPlanClass.controller;
 
 import com.neusoft.core.restful.AppResponse;
 import com.neusoft.security.client.utils.SecurityUtils;
-import com.plan.pc.planClass.entity.PlanClassInfo;
-import com.plan.pc.planClass.entity.PlanClassVo;
-import com.plan.pc.planClass.service.PlanClassService;
+import com.plan.pc.tbPlanClass.entity.PlanClassInfo;
+import com.plan.pc.tbPlanClass.entity.PlanClassVo;
+import com.plan.pc.tbPlanClass.service.PlanClassService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/planClass")
 public class PlanClassController {
-    private static final Logger logger = LoggerFactory.getLogger(com.plan.pc.planClass.controller.PlanClassController.class);
+    private static final Logger logger = LoggerFactory.getLogger(com.plan.pc.tbPlanClass.controller.PlanClassController.class);
 
     @Resource
     private PlanClassService planClassService;

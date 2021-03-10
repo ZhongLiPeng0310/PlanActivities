@@ -1,4 +1,4 @@
-package com.plan.pc.planClass.entity;
+package com.plan.pc.tbPlanClass.entity;
 
 import lombok.Data;
 

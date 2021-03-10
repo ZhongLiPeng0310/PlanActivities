@@ -66,8 +66,8 @@ spring:
           result-set-log-enabled: false
   # =================================================== 腾讯云存储配置 ====================================================
   tengxun:
-    accessKey: AKIDUmpdEbwZqse9ONRe7e2B3f2GPOGt6PH9
-    secretKey: oRpzxiIezFQXIsCHKEuKUYO0NdmlVzPa
+    accessKey: AKIDrSs2ynQzkLgmeGFtpX2ILRGpoZ3Ioj4G
+    secretKey: FNGvNbXKxOblkTyEEypTu51iL9i26tZ0
     bucket: images-1301708519
     bucketName: images-1301708519
     path: https://images-1301708519.cos.ap-chengdu.myqcloud.com/

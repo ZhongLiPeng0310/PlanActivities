@@ -1,9 +1,7 @@
-package com.plan.pc.planClass.entity;
+package com.plan.pc.tbPlanClass.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-
-import java.util.Date;
 
 /**
  * @author 12533

@@ -1,15 +1,15 @@
-package com.plan.pc.planClass.service;
+package com.plan.pc.tbSuperPlan.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neusoft.core.restful.AppResponse;
 import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.StringUtil;
-import com.plan.pc.planClass.dao.PlanClassDao;
-import com.plan.pc.planClass.entity.PlanClassEntity;
-import com.plan.pc.planClass.entity.PlanClassInfo;
-import com.plan.pc.planClass.entity.PlanClassVo;
-import com.plan.pc.planClass.repository.PlanClassRepository;
+import com.plan.pc.tbSuperPlan.dao.SuperPlanDao;
+import com.plan.pc.tbSuperPlan.entity.SuperPlanEntity;
+import com.plan.pc.tbSuperPlan.entity.SuperPlanInfo;
+import com.plan.pc.tbSuperPlan.entity.SuperPlanVo;
+import com.plan.pc.tbSuperPlan.repository.SuperPlanRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -23,21 +23,21 @@ import java.util.List;
  * @author 12533
  */
 @Service
-public class PlanClassService {
+public class SuperPlanService {
     @Resource
-    private PlanClassDao planClassDao;
+    private SuperPlanDao superPlanDao;
 
     @Resource
-    private PlanClassRepository planClassRepository;
+    private SuperPlanRepository superPlanRepository;
     /**
      * 保存
-     * @param planClassInfo
+     * @param superPlanInfo
      * @return
      */
-    public AppResponse savePlanClass(PlanClassInfo planClassInfo) {
-        PlanClassEntity entity = new PlanClassEntity();
-        PlanClassEntity oldEntity = planClassRepository.findById(planClassInfo.getId());
-        BeanUtils.copyProperties(planClassInfo,entity);
+    public AppResponse saveSuperPlan(SuperPlanInfo superPlanInfo) {
+        SuperPlanEntity entity = new SuperPlanEntity();
+        SuperPlanEntity oldEntity = superPlanRepository.findById(superPlanInfo.getId());
+        BeanUtils.copyProperties(superPlanInfo,entity);
         if (entity.getId() == null){
             entity.setId(StringUtil.getCommonCode(2));
             //获取用户id
@@ -57,21 +57,21 @@ public class PlanClassService {
         }
         entity.setIsDeleted(1);
         entity.setVersion(0);
-        // 新增活动分类
-        planClassRepository.save(entity);
+        // 新增轮播图
+        superPlanRepository.save(entity);
         return AppResponse.success("保存成功！");
     }
 
     /**
      * 分页查询
-     * @param planClassVo
+     * @param superPlanVo
      * @return
      */
-    public AppResponse listPlanClassByPage(PlanClassVo planClassVo) {
-        PageHelper.startPage(planClassVo.getPageNum(),planClassVo.getPageSize());
-        List<PlanClassVo> planClassVoList = planClassDao.listPlanClassByPage(planClassVo);
+    public AppResponse listSuperPlanByPage(SuperPlanVo superPlanVo) {
+        PageHelper.startPage(superPlanVo.getPageNum(),superPlanVo.getPageSize());
+        List<SuperPlanVo> superPlanVoList = superPlanDao.listSuperPlanByPage(superPlanVo);
         //包装对象
-        PageInfo<PlanClassVo> pageData = new PageInfo<PlanClassVo>(planClassVoList);
+        PageInfo<SuperPlanVo> pageData = new PageInfo<SuperPlanVo>(superPlanVoList);
         return AppResponse.success("查询成功",pageData);
     }
 
@@ -80,10 +80,10 @@ public class PlanClassService {
      * @param id
      * @return
      */
-    public AppResponse getPlanClassById(String id) {
-        PlanClassEntity planClassEntity = planClassRepository.findById(id);
-        PlanClassVo vo = new PlanClassVo();
-        BeanUtils.copyProperties(planClassEntity,vo);
+    public AppResponse getSuperPlanById(String id) {
+        SuperPlanEntity superPlanEntity = superPlanRepository.findById(id);
+        SuperPlanVo vo = new SuperPlanVo();
+        BeanUtils.copyProperties(superPlanEntity,vo);
         return AppResponse.success("查询成功！",vo);
     }
 
@@ -93,20 +93,20 @@ public class PlanClassService {
      * @param userId
      * @return
      */
-    public AppResponse deletePlanClass(String id, String userId) {
+    public AppResponse deleteSuperPlan(String id, String userId) {
         List<String> listId = Arrays.asList(id.split(","));
-        List<PlanClassEntity> oldList = new ArrayList<>();
+        List<SuperPlanEntity> oldList = new ArrayList<>();
         for (String strings : listId){
-            PlanClassEntity oldEntity = planClassRepository.findById(strings);
+            SuperPlanEntity oldEntity = superPlanRepository.findById(strings);
             oldList.add(oldEntity);
         }
-        for (PlanClassEntity entitys : oldList){
-            PlanClassEntity entity = new PlanClassEntity();
+        for (SuperPlanEntity entitys : oldList){
+            SuperPlanEntity entity = new SuperPlanEntity();
             BeanUtils.copyProperties(entitys,entity);
             entity.setUpdateName(userId);
             entity.setUpdateTime(new Date());
             entity.setIsDeleted(0);
-            planClassRepository.save(entity);
+            superPlanRepository.save(entity);
         }
         return AppResponse.success("删除成功！");
     }

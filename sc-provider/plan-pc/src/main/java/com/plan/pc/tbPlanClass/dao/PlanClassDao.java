@@ -1,6 +1,6 @@
-package com.plan.pc.planClass.dao;
+package com.plan.pc.tbPlanClass.dao;
 
-import com.plan.pc.planClass.entity.PlanClassVo;
+import com.plan.pc.tbPlanClass.entity.PlanClassVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

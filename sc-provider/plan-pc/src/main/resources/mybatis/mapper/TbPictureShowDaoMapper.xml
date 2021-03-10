@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.plan.pc.tbPictureShow.dao.TbPictureShowDao">
+
+    <!--轮播图列表-->
+    <select id="listTbPictureShowByPage" parameterType="com.plan.pc.tbPictureShow.entity.TbPictureShowVo" resultType="com.plan.pc.tbPictureShow.entity.TbPictureShowVo">
+        select
+        a.id id,
+        a.sort_no sortNo,
+        a.plan_id planId,
+        a.show_image_url showImageUrl,
+        a.state state,
+        a.begin_time beginTime,
+        a.end_time endTime,
+        a.create_time createTime,
+        a.update_name updateName,
+        a.update_time updateTime,
+        a.version version
+        from tb_picture_show a
+        where a.is_deleted = 1
+<!--        <if test="goodsName != null and goodsName != ''">-->
+<!--            and a.goods_name like concat('%', #{goodsName}, '%')-->
+<!--        </if>-->
+        order by a.create_time desc
+    </select>
+
+</mapper>

@@ -1,9 +1,7 @@
-package com.plan.pc.planClass.entity;
+package com.plan.pc.tbPlanClass.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
