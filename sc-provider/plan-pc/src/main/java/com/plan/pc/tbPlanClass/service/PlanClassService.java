@@ -36,7 +36,6 @@ public class PlanClassService {
      */
     public AppResponse savePlanClass(PlanClassInfo planClassInfo) {
         PlanClassEntity entity = new PlanClassEntity();
-        PlanClassEntity oldEntity = planClassRepository.findById(planClassInfo.getId());
         BeanUtils.copyProperties(planClassInfo,entity);
         if (entity.getId() == null){
             entity.setId(StringUtil.getCommonCode(2));
@@ -47,6 +46,7 @@ public class PlanClassService {
             entity.setUpdateName(userId);
             entity.setUpdateTime(new Date());
         }else {
+            PlanClassEntity oldEntity = planClassRepository.findById(planClassInfo.getId());
             entity.setId(entity.getId());
             //获取用户id
             String userId = SecurityUtils.getCurrentUserId();

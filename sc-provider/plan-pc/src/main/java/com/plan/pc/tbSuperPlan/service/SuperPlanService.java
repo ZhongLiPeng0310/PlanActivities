@@ -2,6 +2,7 @@ package com.plan.pc.tbSuperPlan.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.neusoft.core.enums.StatusEnum;
 import com.neusoft.core.restful.AppResponse;
 import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.StringUtil;
@@ -35,18 +36,34 @@ public class SuperPlanService {
      * @return
      */
     public AppResponse saveSuperPlan(SuperPlanInfo superPlanInfo) {
+        //获取传进来的id的旧数据
         SuperPlanEntity entity = new SuperPlanEntity();
-        SuperPlanEntity oldEntity = superPlanRepository.findById(superPlanInfo.getId());
         BeanUtils.copyProperties(superPlanInfo,entity);
         if (entity.getId() == null){
-            entity.setId(StringUtil.getCommonCode(2));
-            //获取用户id
-            String userId = SecurityUtils.getCurrentUserId();
-            entity.setCreateName(userId);
-            entity.setCreateTime(new Date());
-            entity.setUpdateName(userId);
-            entity.setUpdateTime(new Date());
+            //获取全部已是精选案例
+            List<SuperPlanEntity> allList = superPlanRepository.findByIsDeleted(StatusEnum.NORMAL_STATUS.getCode());
+            if (allList.size() > 0){
+                //新建list存在精选案例的planId
+                List<String> stringList = new ArrayList<>();
+                for (SuperPlanEntity entities : allList){
+                    stringList.add(entities.getPlanId());
+                }
+                entity.setId(StringUtil.getCommonCode(2));
+                //获取用户id
+                String userId = SecurityUtils.getCurrentUserId();
+                entity.setCreateName(userId);
+                entity.setCreateTime(new Date());
+                entity.setUpdateName(userId);
+                entity.setUpdateTime(new Date());
+                entity.setIsDeleted(1);
+                entity.setVersion(0);
+                //过滤已存在的活动
+                if (!(stringList.contains(entity.getPlanId()))){
+                    superPlanRepository.save(entity);
+                }
+            }
         }else {
+            SuperPlanEntity oldEntity = superPlanRepository.findById(superPlanInfo.getId());
             entity.setId(entity.getId());
             //获取用户id
             String userId = SecurityUtils.getCurrentUserId();
@@ -54,11 +71,11 @@ public class SuperPlanService {
             entity.setCreateTime(oldEntity.getCreateTime());
             entity.setUpdateName(userId);
             entity.setUpdateTime(new Date());
+            entity.setIsDeleted(1);
+            entity.setVersion(0);
+            // 新增轮播图
+            superPlanRepository.save(entity);
         }
-        entity.setIsDeleted(1);
-        entity.setVersion(0);
-        // 新增轮播图
-        superPlanRepository.save(entity);
         return AppResponse.success("保存成功！");
     }
 

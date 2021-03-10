@@ -56,8 +56,6 @@ public class TbUserService {
     public AppResponse saveUser(TbUserInfo userInfo) {
          //校验账号和手机号码是否存在
         List<UserEntity> countUsers = userRepository.findByUserAcctOrPhone(userInfo.getUserAcct(),userInfo.getPhone());
-        //旧数据
-        UserEntity oldEntity = userRepository.findById(userInfo.getId());
         UserEntity entity = new UserEntity();
         BeanUtils.copyProperties(userInfo,entity);
         if (entity.getId() == null){
@@ -76,6 +74,8 @@ public class TbUserService {
             entity.setUpdateName(userId);
             entity.setUpdateTime(new Date());
         }else {
+            //旧数据
+            UserEntity oldEntity = userRepository.findById(userInfo.getId());
             //修改时------校验账号和手机号是否存在
             if (!oldEntity.getUserAcct().equals(entity.getUserAcct())  || !oldEntity.getPhone().equals(entity.getPhone())){
                 if(countUsers.size() != 0) {

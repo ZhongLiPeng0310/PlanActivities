@@ -43,7 +43,6 @@ public class TbGoodsService {
     @Transactional(rollbackFor = Exception.class)
     public AppResponse saveGoods(TbGoodsInfo tbGoodsInfo) {
         TbGoodsEntity entity = new TbGoodsEntity();
-        TbGoodsEntity oldEntity = tbGoodsRepository.findById(tbGoodsInfo.getId());
         BeanUtils.copyProperties(tbGoodsInfo,entity);
         if (entity.getId() == null){
             entity.setId(StringUtil.getCommonCode(2));
@@ -54,6 +53,7 @@ public class TbGoodsService {
             entity.setUpdateName(userId);
             entity.setUpdateTime(new Date());
         }else {
+            TbGoodsEntity oldEntity = tbGoodsRepository.findById(tbGoodsInfo.getId());
             entity.setId(oldEntity.getId());
             //获取用户id
             String userId = SecurityUtils.getCurrentUserId();

@@ -14,7 +14,7 @@ import java.util.Date;
  */
 @Data
 @Entity
-@Table(name = "tb_supet_plan")
+@Table(name = "tb_super_plan")
 public class SuperPlanEntity {
     @Id
     @Column(name = "id")

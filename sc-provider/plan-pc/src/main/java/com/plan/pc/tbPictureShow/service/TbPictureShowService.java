@@ -36,7 +36,6 @@ public class TbPictureShowService {
      */
     public AppResponse saveTbPictureShow(TbPictureShowInfo tbPictureShowInfo) {
         TbPictureShowEntity entity = new TbPictureShowEntity();
-        TbPictureShowEntity oldEntity = tbPictureShowRepository.findById(tbPictureShowInfo.getId());
         BeanUtils.copyProperties(tbPictureShowInfo,entity);
         if (entity.getId() == null){
             entity.setId(StringUtil.getCommonCode(2));
@@ -47,6 +46,7 @@ public class TbPictureShowService {
             entity.setUpdateName(userId);
             entity.setUpdateTime(new Date());
         }else {
+            TbPictureShowEntity oldEntity = tbPictureShowRepository.findById(tbPictureShowInfo.getId());
             entity.setId(entity.getId());
             //获取用户id
             String userId = SecurityUtils.getCurrentUserId();

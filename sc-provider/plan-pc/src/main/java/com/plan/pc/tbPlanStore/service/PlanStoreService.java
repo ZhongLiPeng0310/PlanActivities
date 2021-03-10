@@ -39,7 +39,6 @@ public class PlanStoreService {
      */
     public AppResponse savePlanStore(PlanStoreInfo planStoreInfo) {
         PlanStoreEntity entity = new PlanStoreEntity();
-        PlanStoreEntity oldEntity = planStoreRespository.findById(planStoreInfo.getId());
         BeanUtils.copyProperties(planStoreInfo,entity);
         if (entity.getId() == null){
             entity.setId(StringUtil.getCommonCode(2));
@@ -50,6 +49,7 @@ public class PlanStoreService {
             entity.setUpdateName(userId);
             entity.setUpdateTime(new Date());
         }else {
+            PlanStoreEntity oldEntity = planStoreRespository.findById(planStoreInfo.getId());
             entity.setId(entity.getId());
             //获取用户id
             String userId = SecurityUtils.getCurrentUserId();
