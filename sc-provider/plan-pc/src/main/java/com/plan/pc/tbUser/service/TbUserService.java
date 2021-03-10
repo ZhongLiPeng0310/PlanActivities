@@ -11,6 +11,7 @@ import com.plan.pc.tbUser.entity.TbUserVo;
 import com.plan.pc.tbUser.entity.UserEntity;
 import com.plan.pc.tbUser.repository.UserRepository;
 import com.plan.pc.user.entity.UserInfo;
+import com.plan.pc.util.PasswordUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,35 +54,43 @@ public class TbUserService {
      */
     @Transactional(rollbackFor = Exception.class)
     public AppResponse saveUser(TbUserInfo userInfo) {
-        // 校验账号是否存在
-//        int countUser = userDao.countUser(userInfo);
-//        if(0 != countUser) {
-//            return AppResponse.bizError("用户账号或手机号已存在，请重新输入！");
-//        }
-        //密码加密
-//        if (entity.getUserPassword() != null) {
-//            //查出数据库里原加密密码，如果不修改密码，密码无需再次加密
-//            String password = userDao.findPwd(userInfo);
-//            if (!userInfo.getUserPassword().equals(password)){
-//                String pwd = PasswordUtils.generatePassword(userInfo.getUserPassword());
-//                userInfo.setUserPassword(pwd);
-//            }
-//        }
-        UserEntity entity = new UserEntity();
+         //校验账号和手机号码是否存在
+        List<UserEntity> countUsers = userRepository.findByUserAcctOrPhone(userInfo.getUserAcct(),userInfo.getPhone());
+        //旧数据
         UserEntity oldEntity = userRepository.findById(userInfo.getId());
+        UserEntity entity = new UserEntity();
         BeanUtils.copyProperties(userInfo,entity);
         if (entity.getId() == null){
+            //新增时------校验账号和手机号码是否存在
+            if(countUsers.size() != 0) {
+                return AppResponse.bizError("用户账号或手机号已存在，请重新输入！");
+            }
             entity.setId(StringUtil.getCommonCode(2));
             //获取用户id
             String userId = SecurityUtils.getCurrentUserId();
+            //密码加密
+            String pwd = PasswordUtils.generatePassword(userInfo.getUserPassword());
+            entity.setUserPassword(pwd);
             entity.setCreateName(userId);
             entity.setCreateTime(new Date());
             entity.setUpdateName(userId);
             entity.setUpdateTime(new Date());
         }else {
+            //修改时------校验账号和手机号是否存在
+            if (!oldEntity.getUserAcct().equals(entity.getUserAcct())  || !oldEntity.getPhone().equals(entity.getPhone())){
+                if(countUsers.size() != 0) {
+                    return AppResponse.bizError("用户账号或手机号已存在，请重新输入！");
+                }
+            }
             entity.setId(entity.getId());
             //获取用户id
             String userId = SecurityUtils.getCurrentUserId();
+            //查出数据库里原加密密码，如果不修改密码，密码无需再次加密
+            UserEntity getPwdEntity = userRepository.findById(entity.getId());
+            if (!entity.getUserPassword().equals(getPwdEntity.getUserPassword())){
+                String pwd = PasswordUtils.generatePassword(userInfo.getUserPassword());
+                entity.setUserPassword(pwd);
+            }
             entity.setCreateName(oldEntity.getCreateName());
             entity.setCreateTime(oldEntity.getCreateTime());
             entity.setUpdateName(userId);
