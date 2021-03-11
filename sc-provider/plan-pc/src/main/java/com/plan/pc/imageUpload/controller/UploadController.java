@@ -36,30 +36,36 @@ public class UploadController {
      * @return
      */
     @PostMapping("/uploadImage")
-    public AppResponse uploadImage(@RequestParam("imageFile") MultipartFile file){
-        System.out.println(file.getContentType().substring(6));// image/png
-        if (file.isEmpty()) {
+    public AppResponse uploadImage(@RequestParam("imageFile") MultipartFile[] file){
+        System.out.println(file.length);
+        if (file.length < 0) {
             return AppResponse.bizError("上传失败，请选择文件");
         }
-        COSClient cosClient = tencentUtil.tencentStart();
-        // bucket的命名规则为{name}-{appid} ，此处填写的存储桶名称必须为此格式
-        String bucketName = tencentUtil.getBucketName();
-        // 指定要上传到 COS 上对象键
-        // 对象键（Key）是对象在存储桶中的唯一标识。例如，在对象的访问域名 `bucket1-1250000000.cos.ap-beijing.myqcloud.com/mydemo.jpg` 中，对象键为 mydemo.jpg, 详情参考 [对象键](https://cloud.tencent.com/document/product/436/13324)
-        String key = tencentUtil.getQianzhui() + "/"+ tencentUtil.getQianzhui()+ "_" + UUIDUtils.getUUID() + "." + file.getContentType().substring(6);
-        File localFile = null;
-        try {
-            //将 MultipartFile 类型 转为 File 类型
-            localFile = File.createTempFile("temp",null);
-            file.transferTo(localFile);
-        }catch (IOException e){
-            logger.error("上传失败！请重新上传！");
-            System.out.println(e.getMessage());
+        Map<String,String> maps = new HashMap<>();
+        for (int i = 0; i < file.length; i++) {
+            MultipartFile files = file[i];
+            System.out.println(files.getContentType().substring(6));// image/png
+            COSClient cosClient = tencentUtil.tencentStart();
+            // bucket的命名规则为{name}-{appid} ，此处填写的存储桶名称必须为此格式
+            String bucketName = tencentUtil.getBucketName();
+            // 指定要上传到 COS 上对象键
+            // 对象键（Key）是对象在存储桶中的唯一标识。例如，在对象的访问域名 `bucket1-1250000000.cos.ap-beijing.myqcloud.com/mydemo.jpg` 中，对象键为 mydemo.jpg, 详情参考 [对象键](https://cloud.tencent.com/document/product/436/13324)
+            String key = tencentUtil.getQianzhui() + "/"+ tencentUtil.getQianzhui()+ "_" + UUIDUtils.getUUID() + "." + files.getContentType().substring(6);
+            File localFile = null;
+            try {
+                //将 MultipartFile 类型 转为 File 类型
+                localFile = File.createTempFile("temp",null);
+                files.transferTo(localFile);
+            }catch (IOException e){
+                logger.error("上传失败！请重新上传！");
+                System.out.println(e.getMessage());
+            }
+            Map<String,String> map = new HashMap<>();
+            PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, key, localFile);
+            PutObjectResult putObjectResult = cosClient.putObject(putObjectRequest);
+            map.put("imagePath" +i,tencentUtil.getPath()+key);
+            maps.putAll(map);
         }
-        PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, key, localFile);
-        PutObjectResult putObjectResult = cosClient.putObject(putObjectRequest);
-        Map<String,String> map = new HashMap<>();
-        map.put("imagePath",tencentUtil.getPath()+key);
-        return AppResponse.success("上传成功！",map);
+        return AppResponse.success("上传成功！",maps);
     }
 }
