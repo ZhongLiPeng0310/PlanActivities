@@ -25,3 +25,5 @@
 /sc-security/sc-security-core/build/classes/java/main/
 /sc-security/sc-security-uaa/build/
 /sc-security/sc-security-uaa/build/classes/java/main/
+/pc/plan-pc/node_modules/
+/app/plan-app/node_modules/

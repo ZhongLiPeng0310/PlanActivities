@@ -1,0 +1,83 @@
+// 修改输入框的全局样式
+.el-form {
+  .el-form-item {
+    
+    .el-form-item__label {
+      width: 85px;
+    }
+    
+    .el-form-item__content {
+
+      .el-select {
+        width: 100%;
+      }
+
+      .el-input {
+        width: 200px;
+        
+        .el-input__inner {
+          border-radius: 0;
+          height: 30px;
+          width: 200px;
+        }
+      }
+
+      // .file-box {
+      //   height: 30px;
+      //   width: 200px;
+      //   overflow: auto;
+      // }
+
+      .el-textarea {
+        
+        .el-textarea__inner {
+          width: 200px;
+        }
+      }
+
+      .el-date-editor {
+        width: 100%;
+      }
+
+      .el-date-editor {
+        height: 30px;
+        line-height: 30px;
+        width: 500px;
+        border-radius: 0;
+
+        .el-input__icon {
+          line-height: 22px;
+        }
+
+        .el-range-separator {
+          line-height: 22px;
+        }
+      }
+    }
+  }
+}
+
+// 修改按钮公共样式
+.el-button {
+  padding: 0 12px;
+  border-radius: 0;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.box-table tbody .cell{
+  max-height: 150px;
+}
+
+.el-table .cell {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-all;
+  line-height: 50px;
+  padding-right: 10px;
+  height: 50px;
+}
