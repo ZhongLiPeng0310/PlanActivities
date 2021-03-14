@@ -81,7 +81,7 @@ export default {
       axios({
         method: 'post',
         url: 'http://localhost:8080/pc/user/getUserUrl', // 本地
-        data: qs.stringify({access_token: token}), 
+        data: qs.stringify({access_token: token}),
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;'
         }
@@ -105,7 +105,7 @@ export default {
             })
             sessionStorage.setItem('menuInfo', JSON.stringify(menuList)) // 存入sessionStorage 方便home 页面的调用
           })
-          
+
           if (data.data.data.role === '2') {
             this.$router.push({ path: '/client-manage' })
           } else {
@@ -128,8 +128,8 @@ export default {
   position: absolute;
   left: 0px;
   top: 0px;
-  width: 1515px;
-  height: 720px;
+  width: 100%;
+  height: 100%;
 }
 .u2{
   position: absolute;
@@ -137,11 +137,11 @@ export default {
   top: 0px;
   width: 0px;
   height: 0px;
-  
+
   .u3 {
     position: absolute;
-    left: 620px;
-    top: 90px;
+    left: 800px;
+    top: 120px;
     width: 278px;
     height: 249px;
     color: #777;
@@ -162,7 +162,7 @@ export default {
             left: 30px;
           }
         }
-        
+
         .el-button {
           padding: 0 25px;
           margin-top: 20px;
