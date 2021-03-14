@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import ErrorPage from '@/components/router销毁/error.vue'
 import Login from '@/pages/login.vue'
+import Login1 from '@/pages/login1.vue'
 import Test from '@/pages/test.vue'
 import Test2 from '@/pages/test2.vue'
 
@@ -12,7 +13,7 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login1
     },
     {
       path: '/',
